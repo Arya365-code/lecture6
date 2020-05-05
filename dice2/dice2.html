@@ -12,9 +12,16 @@
             }
         </style>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+        <script id="result" type="text/x-handlebars-template">
+            <li>
+                You rolled:
+                <img alt="{{value}}" title="{{ value }}" src="{{ value }}.ong"></img>
+            </li>
+        </script>
         <script>
+        
             //Template for roll results
-            const template = Handlebars.compile("<li>You rolled: <img src=\"{{ value }}.png\"></li>");
+            const template = Handlebars.compile(document.querySelector('#result').innerHTML);
             
             document.addEventListener('DOMContentLoaded', () => {
                 document.querySelector('#roll').onclick = () => {
