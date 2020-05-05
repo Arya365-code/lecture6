@@ -3,6 +3,10 @@
     <head>
         <title>My Webpage</title>
         <style>
+            .hide { 
+                float: right;
+            }
+            
             .post {
                 background-color: #77dd11;
                 padding: 20px;
@@ -61,12 +65,23 @@
                 
                 //Create a new post.
                 post.classname = 'post';
+                post.innerHTML = contents;
                 const post = document.createElement('div')
+                
+                //Add button to hide post.
+                const hide = document.createElement('button');
+                hide.className = 'hide';
+                hide.innerHTML = 'Hide';
+                post.append(hide);
+                
+                //When hide button is clicked, remove post.
+                hide.onclick = function() {
+                    this.parentElement.remove();
+                };
                 
                 //Add post to DOM.
                 document.querySelector'#posts').append(post);
             };
-                post.innerHTML = contents;
         </script>
     </head>
     <body>
