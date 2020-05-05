@@ -12,10 +12,13 @@
             }
         </style>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
-        <script id="result" type="text/x-handlebars-template">
+        <script id="result" type="text/template">
             <li>
                 You rolled:
-                <img alt="{{value}}" title="{{ value }}" src="{{ value }}.ong"></img>
+                {{#each values}}
+                    <img alt="{{ this }}" title="{{ this }}" src="{{ this }}.png"></img>
+                {{/each}}
+                (Total: {{ total }})
             </li>
         </script>
         <script>
