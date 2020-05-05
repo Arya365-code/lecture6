@@ -30,7 +30,7 @@
                 document.querySelector('#roll').onclick = () => {
                     
                     //Generate random rolls.
-                    const counter = parseInt(document.querySelector('#counter').valu);
+                    const counter = parseInt(document.querySelector('#counter').value);
                     const rolls = [];
                     let total = 0;
                     for (let i = 0; i < counter; i++) {
@@ -47,7 +47,7 @@
         </script>
     </head>
     <body>
-        <input id="counter" type="number" placeholder="Number of Rolls" min="1" val
+        <input id="counter" type="number" placeholder="Number of Rolls" min="1" value="1">
         <button id="roll">Roll</button>
         <ul id="rolls">
         </ul>
