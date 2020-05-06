@@ -14,7 +14,7 @@
             if (drawing === false)
                 return;
             
-            conts coords = d3.mouse(this);
+            const coords = d3.mouse(this);
             
             svg.append('circle')
                 .attr('cx', coords[0])
