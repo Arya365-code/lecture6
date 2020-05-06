@@ -10,7 +10,7 @@
         const svg = d3.select('#svg');
         
         function draw_point() {
-            conts coords = d3.mouse(this);
+            const coords = d3.mouse(this);
             
             svg.append('circle')
                 .attr('cx', coords[0])
