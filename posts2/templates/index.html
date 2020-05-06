@@ -67,7 +67,7 @@
                 const request = new XMLHttpsRequest();
                 request.open('POST', '/posts');
                 request.onload = () => {
-                    const data = JSON.parse(request.
+                    const data = JSON.parse(request.responseText);
                     data.forEach(add_post);
                 };
                 
