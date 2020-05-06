@@ -17,6 +17,18 @@
                 padding-bottom: 50px;
             }
         </style>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+        
+        <script id="post" type="text/x-handlebars-template">
+            <div class="post">
+                {% raw -%}
+                    {{ contents }}
+                {%- endraw %}
+                <button class="hide">Hide</button>
+            </div>
+        </script>
+        
         <script>
             
             //Start with first post.
@@ -34,6 +46,14 @@
                     load();
                 }
             };
+            
+            //If hide button is clicked, deletethe post.
+            document.addEventListener('click', event => {
+                    const element = event.target;
+                if (element.className === 'hide') {
+                        element.parentElement.remove();
+                }
+            });
             
             //Load next set of posts.
             function load() {
@@ -57,31 +77,19 @@
                 data.append('end', end);
                 
                 //Send request
-                request.send()
+                request.send(data);
             };
             
-            //Addd a new post with given contents to DOM
-            function add_post(contents) {
+            //Add a new post with given contents to DOM
+            const post_template = Handlebars.compile(document.querySelector('#post')
+            function.add_post(contents) {
                 
                 //Create a new post.
-                post.classname = 'post';
-                post.innerHTML = contents;
-                const post = document.createElement('div')
+                const post = post_template({'contents': contents});
                 
-                //Add button to hide post.
-                const hide = document.createElement('button');
-                hide.className = 'hide';
-                hide.innerHTML = 'Hide';
-                post.append(hide);
-                
-                //When hide button is clicked, remove post.
-                hide.onclick = function() {
-                    this.parentElement.remove();
-                };
-                
-                //Add post to DOM.
-                document.querySelector('#posts').append(post);
-            };
+                //Add post to DOM
+                document.querySelector('#posts').innerHTML += post;
+            }
         </script>
     </head>
     <body>
